@@ -6,6 +6,8 @@ Inputs: phase diagram (.tbd file), simulation parameters
 
 Outputs: animation of grain growth and temperature field
 
+![grains](scratch/Screenshot.png)
+
 ## How it works 
 Parallelised using Numba for fast processing: 
 
