@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 #paths
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 OUTPUTS_DIR = os.path.join(PROJECT_ROOT, 'outputs')
+PHASE_DIAGRAMS_DIR= os.path.join(PROJECT_ROOT, 'phase_diagrams')
 
 #create directories if they do not exist already
 for directory in [OUTPUTS_DIR, PROJECT_ROOT]:
@@ -13,15 +14,15 @@ for directory in [OUTPUTS_DIR, PROJECT_ROOT]:
 @dataclass
 class SimulationConfig:
     #---simulation parameters---
-    x_dim: int = 200
-    y_dim: int = 200
-    pix_dim: float = 2e-5
-    dt: float = 5e-7
-    simulation_time: float = 0.0000001
+    x_dim: int = 4000
+    y_dim: int = 500
+    pix_dim: float = 3e-6
+    dt: float = 1e-8
+    simulation_time: float = 0.00001
 
     #---animation and tuning---
     ani_fps: float = 60
-    ani_duration: float = 20
+    ani_duration: float = 30
 
     q_reduction: float = 1.0 #1.0 is physically correct
     latent_heat_reduction: float = 0.0
@@ -71,7 +72,7 @@ class SimulationConfig:
                 #h_Sm=0.5, <-- actual
                 #h_Lm=1.3, <-- actual
                 h_Sm=100,
-                h_Lm=230,
+                h_Lm=335, #die casting
                 dH_LS=1.067e9,
                 E_srf_SS=0.3,
                 density=2700,
@@ -79,4 +80,22 @@ class SimulationConfig:
                 T_initial=933 + 1e-8,
                 T_mould=303
             )
+
+        '''
+        #allow user to specify composition 
+        if material_name == 'Al-20Cu':
+            return cls(
+                material_name=material_name,
+                T_melt=
+                k_LS=
+                h_Sm=
+                h_Lm=
+                dH_LS=
+                E_srf_SS=
+                density=
+                shc=
+                T_initial=
+                T_mould=
+            )
+            '''
         raise ValueError(f"Unknown material: {material_name}")

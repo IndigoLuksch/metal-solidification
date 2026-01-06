@@ -12,7 +12,7 @@ from config import SimulationConfig
 from physics import Simulation
 
 #---setup configuration---
-notes = "h_Lm, h_Sm are 200x higher than should be"
+notes = "h_Lm, h_Sm: approx for die casting "
 
 start_time = time.time()
 
